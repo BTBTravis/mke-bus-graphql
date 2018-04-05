@@ -28,7 +28,7 @@ let realServices = {
   moment: moment
 }
 
-describe('MTCS API MODULE', function () {
+describe('MCTS API MODULE', function () {
   let fakeServices = createFakeServices();
   let fakebusAPI = createBusAPI(fakeServices)();
   let realbusAPI = createBusAPI(realServices)();
@@ -40,4 +40,16 @@ describe('MTCS API MODULE', function () {
       expect(res.toString().length).to.equal(10);
     });
   });
+  it('getRoutes', () => {
+    return realbusAPI.getRoutes()
+    .then(res => {
+      expect(res).to.be.an('array');
+      res.map(x => {
+        expect(x).to.have.property('rt');
+        expect(x).to.have.property('rtnm');
+        expect(x).to.have.property('rtdd');
+      });
+    });
+  });
+
 });
