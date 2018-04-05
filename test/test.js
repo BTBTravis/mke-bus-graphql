@@ -51,5 +51,46 @@ describe('MCTS API MODULE', function () {
       });
     });
   });
-
+  it('getVehiclesByRoute with array', () => {
+    return realbusAPI.getVehiclesByRoute([23, 30])
+    .then(res => {
+      expect(res).to.be.an('array');
+      res.map(x => {
+        expect(x).to.have.property('vid');
+        expect(x).to.have.property('tmstmp');
+        expect(x).to.have.property('lat');
+        expect(x).to.have.property('lon');
+        expect(x).to.have.property('hdg');
+        expect(x).to.have.property('pid');
+        expect(x).to.have.property('rt');
+        expect(x).to.have.property('des');
+        expect(x).to.have.property('pdist');
+        expect(x).to.have.property('spd');
+        expect(x).to.have.property('tablockid');
+        expect(x).to.have.property('tatripid');
+        expect(x).to.have.property('zone');
+      });
+    });
+  });
+  it('getVehiclesByRoute with number', () => {
+    return realbusAPI.getVehiclesByRoute(23)
+    .then(res => {
+      expect(res).to.be.an('array');
+      res.map(x => {
+        expect(x).to.have.property('vid');
+        expect(x).to.have.property('tmstmp');
+        expect(x).to.have.property('lat');
+        expect(x).to.have.property('lon');
+        expect(x).to.have.property('hdg');
+        expect(x).to.have.property('pid');
+        expect(x).to.have.property('rt');
+        expect(x).to.have.property('des');
+        expect(x).to.have.property('pdist');
+        expect(x).to.have.property('spd');
+        expect(x).to.have.property('tablockid');
+        expect(x).to.have.property('tatripid');
+        expect(x).to.have.property('zone');
+      });
+    });
+  });
 });
