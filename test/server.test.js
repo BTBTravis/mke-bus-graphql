@@ -64,5 +64,37 @@ describe('GraphQL Server MODULE', function () {
         });
       });
   });
+  it('vehicles', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+         vehicles(vid: 5325) {
+           vid
+           tmstmp
+           lat
+           lon
+           hdg
+           pid
+           rt
+           des
+           pdist
+           spd
+           tablockid
+           tatripid
+           zone
+         }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data;
+        res.vehicles.map(r => {
+          expect(r.vid).to.be.a('number');
+          expect(r.lat).to.be.a('number');
+          expect(r.rt).to.be.a('string');
+        });
+      });
+  });
 });
 
