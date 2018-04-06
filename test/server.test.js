@@ -117,6 +117,28 @@ describe('GraphQL Server MODULE', function () {
           expect(r.lon).to.be.a('number');
           expect(r.stpnm).to.be.a('string');
         });
+    });
+  });
+  it('stop', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+          stop(stpid: 1793) {
+            stpid
+            lat
+            lon
+            stpnm
+          }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data.stop;
+        expect(res.stpid).to.be.a('number');
+        expect(res.lat).to.be.a('number');
+        expect(res.lon).to.be.a('number');
+        expect(res.stpnm).to.be.a('string');
       });
   });
 });

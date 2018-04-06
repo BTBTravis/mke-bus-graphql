@@ -181,6 +181,14 @@ describe('MCTS API MODULE', function () {
       });
     });
   });
-
+  it('getStopByStpid', () => {
+    return realbusAPI.getStopByStpid(1793)
+    .then(res => {
+      expect(res).to.have.property('stpid');
+      expect(res).to.have.property('lat');
+      expect(res).to.have.property('lon');
+      expect(res).to.have.property('stpnm');
+    });
+  });
 });
 
