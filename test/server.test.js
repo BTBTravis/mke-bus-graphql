@@ -40,5 +40,29 @@ describe('GraphQL Server MODULE', function () {
         expect(res.serverTimes.graphqlServer.toString().length).to.equal(10);
       });
   });
+  it('routes', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+         routes {
+           rt
+           rtnm
+           rtclr
+           rtdd
+         }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data;
+        res.routes.map(r => {
+          expect(r.rt).to.be.a('string');
+          expect(r.rtnm).to.be.a('string');
+          expect(r.rtclr).to.be.a('string');
+          expect(r.rtdd).to.be.a('string');
+        });
+      });
+  });
 });
 
