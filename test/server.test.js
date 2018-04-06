@@ -40,5 +40,61 @@ describe('GraphQL Server MODULE', function () {
         expect(res.serverTimes.graphqlServer.toString().length).to.equal(10);
       });
   });
+  it('routes', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+         routes {
+           rt
+           rtnm
+           rtclr
+           rtdd
+         }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data;
+        res.routes.map(r => {
+          expect(r.rt).to.be.a('string');
+          expect(r.rtnm).to.be.a('string');
+          expect(r.rtclr).to.be.a('string');
+          expect(r.rtdd).to.be.a('string');
+        });
+      });
+  });
+  it('vehicles', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+         vehicles(vid: 5325) {
+           vid
+           tmstmp
+           lat
+           lon
+           hdg
+           pid
+           rt
+           des
+           pdist
+           spd
+           tablockid
+           tatripid
+           zone
+         }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data;
+        res.vehicles.map(r => {
+          expect(r.vid).to.be.a('number');
+          expect(r.lat).to.be.a('number');
+          expect(r.rt).to.be.a('string');
+        });
+      });
+  });
 });
 

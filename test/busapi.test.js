@@ -160,5 +160,14 @@ describe('MCTS API MODULE', function () {
       });
     });
   });
+  it('getDirectionsByRoute with rt', () => {
+    return realbusAPI.getDirectionsByRoute(23)
+    .then(res => {
+      expect(res).to.be.an('array');
+      res.map(x => {
+        expect(x).to.be.an('string');
+      });
+    });
+  });
 });
 
