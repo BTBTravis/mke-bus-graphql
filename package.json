@@ -4,9 +4,9 @@
   "description": "A graphql server for MCTS's real time bus data",
   "main": "./dist/app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register",
-    "test-watch": "mocha -w --compilers js:babel-register",
-    "start": "nodemon lib/shell.js --exec babel-node --presets es2015,stage-2"
+    "test": "mocha  \"test/*.test.js\" --compilers js:babel-register",
+    "test-watch": "mocha \"test/*.test.js\" -w --compilers js:babel-register",
+    "start": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2"
   },
   "keywords": [
     "bus",
@@ -37,6 +37,7 @@
     "dotenv": "^5.0.1",
     "mocha": "^5.0.5",
     "nodemon": "^1.17.3",
-    "sinon": "^4.5.0"
+    "sinon": "^4.5.0",
+    "supertest": "^3.0.0"
   }
 }
