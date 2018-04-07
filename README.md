@@ -25,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-To get MKE BUS GraphQL server running on your local machine do the following.
+To get MKE BUS GraphQL server running on your local machine do the following steps.
 
 1. ```git clone https://github.com/BTBTravis/mke-bus-graphql.git```
 2. ```cd mke-bus-graphql```
