@@ -49,7 +49,7 @@ Run tests once: ``` npm run test ```
 
 Continuously run tests on file save: ```npm run test-watch``` 
 
-*currently can't be run tests while running the server because both use port 3000
+*currently can't run tests while running the server because both use port 3000
 
 ### And coding style tests
 
