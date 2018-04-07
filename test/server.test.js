@@ -1,4 +1,3 @@
-import sinon from 'sinon';
 import chai from 'chai';
 const expect = chai.expect;
 
@@ -117,7 +116,7 @@ describe('GraphQL Server MODULE', function () {
           expect(r.lon).to.be.a('number');
           expect(r.stpnm).to.be.a('string');
         });
-    });
+      });
   });
   it('stop', () => {
     return supertest(server)

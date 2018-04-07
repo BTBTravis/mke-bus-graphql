@@ -18,14 +18,14 @@ let createFakeServices = (res) => {
     },
     parseString: xml2js.parseString,
     moment: moment
-  }
+  };
   return services;
 };
 let realServices = {
   axios: axios,
   parseString: xml2js.parseString,
   moment: moment
-}
+};
 
 describe('MCTS API MODULE', function () {
   //let fakeServices = createFakeServices();
@@ -53,39 +53,39 @@ describe('MCTS API MODULE', function () {
 
   it('getTime', () => {
     return realbusAPI.getTime()
-    .then(res => {
-      expect(res).to.be.an('number');
-      expect(res.toString().length).to.equal(10);
-    });
+      .then(res => {
+        expect(res).to.be.an('number');
+        expect(res.toString().length).to.equal(10);
+      });
   });
   it('getRoutes', () => {
     return realbusAPI.getRoutes()
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        expect(x).to.have.property('rt');
-        expect(x).to.have.property('rtnm');
-        expect(x).to.have.property('rtdd');
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          expect(x).to.have.property('rt');
+          expect(x).to.have.property('rtnm');
+          expect(x).to.have.property('rtdd');
+        });
       });
-    });
   });
   it('getVehiclesByRoute with array', () => {
     return realbusAPI.getVehiclesByRoute([23, 30])
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        isVehicle(x);
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          isVehicle(x);
+        });
       });
-    });
   });
   it('getVehiclesByRoute with number', () => {
     return realbusAPI.getVehiclesByRoute(23)
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        isVehicle(x);
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          isVehicle(x);
+        });
       });
-    });
   });
   it('getVehiclesByVID with number', () => {
     let fakeRes = `<?xml version="1.0"?>
@@ -109,12 +109,12 @@ describe('MCTS API MODULE', function () {
     let fakeServices = createFakeServices(fakeRes);
     let fakebusAPI = createBusAPI(fakeServices)();
     return fakebusAPI.getVehiclesByVID(5325)
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        isVehicle(x);
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          isVehicle(x);
+        });
       });
-    });
   });
   it('getVehiclesByVID with array', () => {
     let fakeRes = `<?xml version="1.0"?>
@@ -153,55 +153,55 @@ describe('MCTS API MODULE', function () {
     let fakeServices = createFakeServices(fakeRes);
     let fakebusAPI = createBusAPI(fakeServices)();
     return fakebusAPI.getVehiclesByVID([5339, 5325])
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        isVehicle(x);
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          isVehicle(x);
+        });
       });
-    });
   });
   it('getDirectionsByRoute with rt', () => {
     return realbusAPI.getDirectionsByRoute(23)
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        expect(x).to.be.an('string');
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          expect(x).to.be.an('string');
+        });
       });
-    });
   });
   it('getStopsByRoute with rt & dir', () => {
     return realbusAPI.getStopsByRoute(23, 'NORTH')
-    .then(res => {
-      expect(res).to.be.an('array');
-      res.map(x => {
-        expect(x).to.have.property('stpid');
-        expect(x).to.have.property('lat');
-        expect(x).to.have.property('lon');
-        expect(x).to.have.property('stpnm');
+      .then(res => {
+        expect(res).to.be.an('array');
+        res.map(x => {
+          expect(x).to.have.property('stpid');
+          expect(x).to.have.property('lat');
+          expect(x).to.have.property('lon');
+          expect(x).to.have.property('stpnm');
+        });
       });
-    });
   });
   it('getStopByStpid', () => {
     return realbusAPI.getStopByStpid(1793)
-    .then(res => {
-      expect(res).to.have.property('stpid');
-      expect(res).to.have.property('lat');
-      expect(res).to.have.property('lon');
-      expect(res).to.have.property('stpnm');
-    });
+      .then(res => {
+        expect(res).to.have.property('stpid');
+        expect(res).to.have.property('lat');
+        expect(res).to.have.property('lon');
+        expect(res).to.have.property('stpnm');
+      });
   });
   it('getServiceBulletinsByRoute', () => {
     return realbusAPI.getServiceBulletinsByRoute(23)
-    .then(res => {
-      res.map(sb => {
-        expect(sb.nm).to.be.an('string');
-        expect(sb.sbj).to.be.an('string');
-        expect(sb.dtl).to.be.an('string');
-        expect(sb.brf).to.be.an('string');
-        expect(sb.prty).to.be.an('string');
-        expect(sb.srvc).to.be.an('string');
+      .then(res => {
+        res.map(sb => {
+          expect(sb.nm).to.be.an('string');
+          expect(sb.sbj).to.be.an('string');
+          expect(sb.dtl).to.be.an('string');
+          expect(sb.brf).to.be.an('string');
+          expect(sb.prty).to.be.an('string');
+          expect(sb.srvc).to.be.an('string');
+        });
       });
-    });
   });
 });
 
