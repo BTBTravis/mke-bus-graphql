@@ -16,11 +16,11 @@ These instructions will get you a copy of the project up and running on your loc
 + node >= v6.9
 + npm >= v3.5
 + MCTS Real-Time API key
- + [Create and account here](http://realtime.ridemcts.com/bustime/home.jsp)
- + Confirm Email
- + Sign in and navigate to My API 
- + Request API Acess
- + Should receive email with API key shortly
+  + [Create and account here](http://realtime.ridemcts.com/bustime/home.jsp)
+  + Confirm Email
+  + Sign in and navigate to My API 
+  + Request API Acess
+  + Should receive email with API key shortly
 
 
 ### Installing
