@@ -53,7 +53,9 @@ Continuously run tests on file save: ```npm run test-watch```
 
 ### And coding style tests
 
-Linting coming soon!
+We use [ESLint](https://eslint.org/) to avoid divergent coding styles. The process goes:
+
+```npm run lint```  --> fix style errors --> repeat 
 
 ## Deployment
 
