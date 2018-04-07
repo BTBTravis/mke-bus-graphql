@@ -190,5 +190,18 @@ describe('MCTS API MODULE', function () {
       expect(res).to.have.property('stpnm');
     });
   });
+  it('getServiceBulletinsByRoute', () => {
+    return realbusAPI.getServiceBulletinsByRoute(23)
+    .then(res => {
+      res.map(sb => {
+        expect(sb.nm).to.be.an('string');
+        expect(sb.sbj).to.be.an('string');
+        expect(sb.dtl).to.be.an('string');
+        expect(sb.brf).to.be.an('string');
+        expect(sb.prty).to.be.an('string');
+        expect(sb.srvc).to.be.an('string');
+      });
+    });
+  });
 });
 

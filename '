@@ -78,7 +78,7 @@ export default (services) => () => {
         })
         .then(data => {
           let vehicles = data['bustime-response'].vehicle;
-          if(! vehicles) vehicles = [];
+          //console.log('vehicles: ', vehicles);
           vehicles =  vehicles.map(x => stripXMLOBJ(x));
           vehicles =  vehicles.map(x => { // convert time to unix
             x.tmstmp = services.moment(x.tmstmp, "YYYYMMDD HH:mm:ss").unix();
@@ -128,7 +128,7 @@ export default (services) => () => {
         .then(data => {
           let sb = data['bustime-response'].sb;
           if(!sb) throw 'no sb on that rt';
-          sb = sb.map(x => stripXMLOBJ(x));
+          sb = stops.map(x => stripXMLOBJ(x));
           //return stops[0];
           return sb;
         })
