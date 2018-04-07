@@ -203,5 +203,26 @@ describe('MCTS API MODULE', function () {
         });
       });
   });
+  it('getPredictionsByStpid', () => {
+    return realbusAPI.getPredictionsByStpid(1793)
+      .then(res => {
+        res.map(x => {
+          expect(x.tmstmp).to.be.an('number');
+          expect(x.typ).to.be.an('string');
+          expect(x.stpnm).to.be.an('string');
+          expect(x.stpid).to.be.an('string');
+          if(x.vid) expect(x.vid).to.be.an('string');
+          expect(x.dstp).to.be.an('string');
+          expect(x.rt).to.be.an('string');
+          expect(x.rtdd).to.be.an('string');
+          expect(x.rtdir).to.be.an('string');
+          expect(x.des).to.be.an('string');
+          expect(x.prdtm).to.be.an('number');
+          expect(x.tablockid).to.be.an('string');
+          expect(x.tatripid).to.be.an('string');
+        });
+      });
+  });
+
 });
 
