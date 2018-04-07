@@ -30,8 +30,8 @@ To get MKE BUS GraphQL server running on your local machine do the following.
 1. ```git clone https://github.com/BTBTravis/mke-bus-graphql.git```
 2. ```cd mke-bus-graphql```
 3. ```echo "API_KEY=xxxxxxxxxxxxxxxxxx" >> .env```
- + where xxx is your API key from MCTS.
- + ```echo "example text" >> example.txt``` creates a example.txt file in the current directory containing "example test"
+  + where xxx is your API key from MCTS.
+  + ```echo "example text" >> example.txt``` creates a example.txt file in the current directory containing "example test"
 4. ```npm install```
 5. ```npm run start```
 
