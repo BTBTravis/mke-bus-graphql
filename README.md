@@ -27,23 +27,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 To get MKE BUS GraphQL server running on your local machine do the following.
 
-1. ```
-git clone https://github.com/BTBTravis/mke-bus-graphql.git
-```
-2. ```
-cd mke-bus-graphql
-```
-3. ```
-echo "API_KEY=xxxxxxxxxxxxxxxxxx" >> .env
-```
+1. ```git clone https://github.com/BTBTravis/mke-bus-graphql.git```
+2. ```cd mke-bus-graphql```
+3. ```echo "API_KEY=xxxxxxxxxxxxxxxxxx" >> .env```
  + where xxx is your API key from MCTS.
  + ```echo "example text" >> example.txt``` creates a example.txt file in the current directory containing "example test"
-4. ```
-npm install
-```
-5. ```
-npm run start
-```
+4. ```npm install```
+5. ```npm run start```
 
 nodemon should now be active running the server on port 3000. You can access super helpful graphiql interface from **http://localhost:3000/graphiql** otherwise send GraphQL request to **http://localhost:3000/graphql** . Changes in the code will auto reload the server but sometimes you have to manually reload the `/graphiql` page when working with it. 
 
