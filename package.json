@@ -4,9 +4,12 @@
   "description": "A graphql server for MCTS's real time bus data",
   "main": "./dist/app.js",
   "scripts": {
+    "postinstall": "babel lib -d dist",
+    "start": "node dist/app.js",
+    "start-watch": "nodemon lib/app.js --exec babel-node",
+    "start-dev": "babel-node lib/app.js",
     "test": "mocha  \"test/*.test.js\" --compilers js:babel-register",
     "test-watch": "mocha \"test/*.test.js\" -w --compilers js:babel-register",
-    "start": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2",
     "lint": "eslint \"lib/**\" \"test/**\" "
   },
   "keywords": [

@@ -1,11 +1,12 @@
 # MKE BUS GraphQL API
 
-GraphQL API for MCTS Real Time Data
-
-
 [![CircleCI](https://circleci.com/gh/BTBTravis/mke-bus-graphql.svg?style=svg)](https://circleci.com/gh/BTBTravis/mke-bus-graphql)
 
-
+GraphQL API for MCTS Real Time Data
+## Public API
+Hosted on Heroku Free Tier
+### https://vast-wave-14479.herokuapp.com/graphiql
+### https://vast-wave-14479.herokuapp.com/graphql
 
 ## Getting Started
 
@@ -59,7 +60,16 @@ We use [ESLint](https://eslint.org/) to avoid divergent coding styles. The proce
 
 ## Deployment
 
-Heroku deployment integration coming soon!
+### Heroku deployment
+1. Follow install instructions to get things up and running locally first.
+1. Make sure you have heroku account and [heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)
+1. Init heroku with ```heroku create```
+1. Load your API key into heroku ```heroku config:set API_KEY=xxxxxxxxxxxxxxx``` where xxx is your key
+1. Push code to heroku ```git push heroku master```
+1. Create a single dyno ```heroku ps:scale web=1```
+1. Open Project with ```heroku open``` should get a **Cannot GET /** because this server only exposes two end points.
+1. Add `/graphiql` to the URL to navigate to GraphiQL to and make some queries or explore the documentation. 
+1. Create an awesome app powered by GraphQL and MCTS Real-Time Data. 
 
 ## Built With
 * [Express.js](https://expressjs.com/) - The Nodejs server  framework used
