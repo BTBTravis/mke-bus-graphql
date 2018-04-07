@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha  \"test/*.test.js\" --compilers js:babel-register",
     "test-watch": "mocha \"test/*.test.js\" -w --compilers js:babel-register",
-    "start": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2",
+    "start-watch": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2",
+    "start": "babel-node lib/app.js --presets es2015,stage-2",
     "lint": "eslint \"lib/**\" \"test/**\" "
   },
   "keywords": [
