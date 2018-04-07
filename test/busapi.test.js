@@ -169,5 +169,26 @@ describe('MCTS API MODULE', function () {
       });
     });
   });
+  it('getStopsByRoute with rt & dir', () => {
+    return realbusAPI.getStopsByRoute(23, 'NORTH')
+    .then(res => {
+      expect(res).to.be.an('array');
+      res.map(x => {
+        expect(x).to.have.property('stpid');
+        expect(x).to.have.property('lat');
+        expect(x).to.have.property('lon');
+        expect(x).to.have.property('stpnm');
+      });
+    });
+  });
+  it('getStopByStpid', () => {
+    return realbusAPI.getStopByStpid(1793)
+    .then(res => {
+      expect(res).to.have.property('stpid');
+      expect(res).to.have.property('lat');
+      expect(res).to.have.property('lon');
+      expect(res).to.have.property('stpnm');
+    });
+  });
 });
 

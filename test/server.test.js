@@ -1,4 +1,3 @@
-// TODO: add express server test here
 import sinon from 'sinon';
 import chai from 'chai';
 const expect = chai.expect;
@@ -94,6 +93,52 @@ describe('GraphQL Server MODULE', function () {
           expect(r.lat).to.be.a('number');
           expect(r.rt).to.be.a('string');
         });
+      });
+  });
+  it('stops', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+          stops(rt: "23", dir: "NORTH") {
+            stpid
+            lat
+            lon
+            stpnm
+          }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data;
+        res.stops.map(r => {
+          expect(r.stpid).to.be.a('number');
+          expect(r.lat).to.be.a('number');
+          expect(r.lon).to.be.a('number');
+          expect(r.stpnm).to.be.a('string');
+        });
+    });
+  });
+  it('stop', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+          stop(stpid: 1793) {
+            stpid
+            lat
+            lon
+            stpnm
+          }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data.stop;
+        expect(res.stpid).to.be.a('number');
+        expect(res.lat).to.be.a('number');
+        expect(res.lon).to.be.a('number');
+        expect(res.stpnm).to.be.a('string');
       });
   });
 });
