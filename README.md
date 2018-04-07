@@ -1,11 +1,12 @@
 # MKE BUS GraphQL API
 
-GraphQL API for MCTS Real Time Data
-
-
 [![CircleCI](https://circleci.com/gh/BTBTravis/mke-bus-graphql.svg?style=svg)](https://circleci.com/gh/BTBTravis/mke-bus-graphql)
 
-
+GraphQL API for MCTS Real Time Data
+## Public API
+Hosted on Heroku Free Tier
+### https://vast-wave-14479.herokuapp.com/graphiql
+### https://vast-wave-14479.herokuapp.com/graphql
 
 ## Getting Started
 
