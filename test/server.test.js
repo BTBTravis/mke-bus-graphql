@@ -128,6 +128,9 @@ describe('GraphQL Server MODULE', function () {
             lat
             lon
             stpnm
+            predictions {
+              tmstmp
+            }
           }
         }`
       })
@@ -138,6 +141,50 @@ describe('GraphQL Server MODULE', function () {
         expect(res.lat).to.be.a('number');
         expect(res.lon).to.be.a('number');
         expect(res.stpnm).to.be.a('string');
+        expect(res.predictions).to.be.a('array');
+      });
+  });
+  // TODO: Service Bulletin Test
+  it('predictions', () => {
+    return supertest(server)
+      .post('/graphql')
+      .send({
+        query: `query {
+          predictions(stpid: 1793) {
+            tmstmp
+            typ
+            stpnm
+            stpid
+            vid
+            dstp
+            rt
+            rtdd
+            rtdir
+            des
+            prdtm
+            tablockid
+            tatripid
+          }
+        }`
+      })
+      .expect(200)
+      .then(res => {
+        res = res.body.data.predictions;
+        res.map(x => {
+          expect(x.tmstmp).to.be.an('number');
+          expect(x.typ).to.be.an('string');
+          expect(x.stpnm).to.be.an('string');
+          expect(x.stpid).to.be.an('number');
+          if(x.vid) expect(x.vid).to.be.an('number');
+          expect(x.dstp).to.be.an('string');
+          expect(x.rt).to.be.an('string');
+          expect(x.rtdd).to.be.an('string');
+          expect(x.rtdir).to.be.an('string');
+          expect(x.des).to.be.an('string');
+          expect(x.prdtm).to.be.an('number');
+          expect(x.tablockid).to.be.an('string');
+          expect(x.tatripid).to.be.an('string');
+        });
       });
   });
 });
